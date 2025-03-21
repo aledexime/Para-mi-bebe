@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌻Para mi bebe🌻</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffefcf, #ff9800);
+            font-family: 'Pacifico', cursive;
+            overflow: hidden;
+            position: relative;
+        }
+        .ramo {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+        }
+        .flor {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            animation: oscilar 3s infinite ease-in-out alternate, girar 8s infinite linear;
+        }
+        .petalos {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+        }
+        .petalo {
+            position: absolute;
+            width: 35px;
+            height: 70px;
+            background: radial-gradient(circle, #ffd700 50%, #ff8c00 80%);
+            border-radius: 50%;
+            transform-origin: bottom center;
+        }
+        .centro {
+            width: 30px;
+            height: 30px;
+            background-color: brown;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        @keyframes oscilar {
+            from { transform: translateY(0); }
+            to { transform: translateY(20px); }
+        }
+        @keyframes girar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .mensaje {
+            position: absolute;
+            top: 15%;
+            font-size: 60px;
+            font-weight: bold;
+            color: #d97706;
+            text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            z-index: 9999; /* Asegurando que esté al frente */
+            background: rgba(255, 255, 255, 0.85);
+            padding: 25px 50px;
+            border-radius: 30px;
+            animation: brillar 2s infinite alternate;
+        }
+
+        .mensaje-especial {
+            position: absolute;
+            bottom: 5%;
+            font-size: 24px;
+            color: #fff;
+            background: rgba(255, 69, 0, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            width: 60%;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 9999; /* Asegurando que esté al frente */
+        }
+
+        @keyframes brillar {
+            from { opacity: 0.6; }
+            to { opacity: 1; }
+        }
+        .corazones {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+        .corazon {
+            position: absolute;
+            color: red;
+            font-size: 40px;
+            animation: flotar 4s infinite linear;
+        }
+        @keyframes flotar {
+            from { transform: translateY(100vh) scale(0.8); opacity: 1; }
+            to { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mensaje">Feliz día, mi amor 💛💐</div>
+    <div class="mensaje-especial">Desde el primer día que te conocí, supe que tú eras la persona con la que quería compartir millones de sonrisas. Te amo muchísimo más que a nada en el mundo. Jamás olvides que eres mi todo. Te amo, preciosa. ¡Feliz día! ❤️</div>
+    <div class="ramo">
+        <script>
+            for (let i = 0; i < 250; i++) {
+                let flor = document.createElement("div");
+                flor.classList.add("flor");
+                flor.style.top = Math.random() * 85 + "vh";
+                flor.style.left = Math.random() * 95 + "vw";
+                flor.style.animationDuration = (Math.random() * 2 + 1.5) + "s";
+                
+                let petalos = document.createElement("div");
+                petalos.classList.add("petalos");
+                
+                for (let j = 0; j < 8; j++) {
+                    let petalo = document.createElement("div");
+                    petalo.classList.add("petalo");
+                    petalo.style.transform = `rotate(${j * 45}deg)`;
+                    petalos.appendChild(petalo);
+                }
+                
+                let centro = document.createElement("div");
+                centro.classList.add("centro");
+                
+                flor.appendChild(petalos);
+                flor.appendChild(centro);
+                document.querySelector(".ramo").appendChild(flor);
+            }
+
+            let corazonesContainer = document.createElement("div");
+            corazonesContainer.classList.add("corazones");
+            document.body.appendChild(corazonesContainer);
+            
+            setInterval(() => {
+                let corazon = document.createElement("div");
+                corazon.classList.add("corazon");
+                corazon.innerHTML = "❤️";
+                corazon.style.left = Math.random() * 100 + "vw";
+                corazon.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                corazonesContainer.appendChild(corazon);
+                setTimeout(() => corazon.remove(), 4000);
+            }, 500);
+        </script>
+    </div>
+</body>
+</html>
